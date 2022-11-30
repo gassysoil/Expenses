@@ -5,23 +5,15 @@ import "./Expenses.css";
 export default function Expenses(props) {
   return (
     <Card className="expenses">
-      <ExpenseItem
-        title={props.expenses[0].title}
-        amount={props.expenses[0].amount}
-        date={props.expenses[0].date}
-      ></ExpenseItem>
-
-      <ExpenseItem
-        title={props.expenses[1].title}
-        amount={props.expenses[1].amount}
-        date={props.expenses[1].date}
-      ></ExpenseItem>
-
-      <ExpenseItem
-        title={props.expenses[2].title}
-        amount={props.expenses[2].amount}
-        date={props.expenses[2].date}
-      ></ExpenseItem>
+      {/* transform expenses array into JSX array of ExpenseItem */}
+      {props.expenses.map((expense) => (
+        <ExpenseItem
+          key={expense.id} // unique id helps react render in a more efficient way
+          title={expense.title}
+          amount={expense.amount}
+          date={expense.date}
+        ></ExpenseItem>
+      ))}
     </Card>
   );
 }
